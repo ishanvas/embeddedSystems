@@ -1,0 +1,5 @@
+/home/ishan/Downloads/FES/lab3-support/kernel/stack_setup.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/stack_setup.S \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h:

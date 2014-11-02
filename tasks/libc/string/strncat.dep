@@ -1,0 +1,11 @@
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/string/strncat.o:  \
+ /home/ishan/Downloads/FES/lab3-support/tasks/libc/string/strncat.c \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h
+
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h:
+
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h:
+
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h:

@@ -1,0 +1,11 @@
+/home/ishan/Downloads/FES/lab3-support/kernel/arm/reg.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/arm/reg.c \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/reg.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/reg.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h:
