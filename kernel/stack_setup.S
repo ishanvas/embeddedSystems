@@ -10,8 +10,9 @@
 	.type setup_stack, %function
 
 setup_stack:	MRS r3, cpsr  @ changes mode
-	BIC r3, r3, #0xF000000F
-	ORR r3, r3, #0xc0
+	BIC r3, r3, #0x000000FF
+	BIC r3, r3, #0xF0000000
+	ORR r3, r3, #0x50
 	MSR spsr_fsxc,r3
 	MRS r6,spsr
 
@@ -26,7 +27,7 @@ setup_stack:	MRS r3, cpsr  @ changes mode
 	LDMFD r5, {sp}^ 	       @setting user mode sp
 	ADD sp,sp ,#4
 	STMFD sp!, {r0-r12,lr}     @saving kernel mode registers on stack
-	MOV lr, #0xa2000000
+	MOV lr, #0xa0000000
 
 	MOVS pc, lr				   @moving to user mode
 

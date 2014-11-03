@@ -1,3 +1,10 @@
+/*
+ * kernel.c: Kernel main (entry) function
+ *
+ * Author: Author: Ishan Vashishtha <ivashish@andrew.cmu.edu>
+ * Date:   Mon, 20 Oct 2014
+ */
+
 #include <exports.h>
 
 #include <arm/psr.h>
@@ -5,57 +12,84 @@
 #include <arm/interrupt.h>
 #include <arm/timer.h>
 
-/*
- * kernel.c: Kernel main (entry) function
- *
- * Author: Author: Ishan Vashishtha <ivashish@andrew.cmu.edu>
- * Date:   Mon, 20 Oct 2014
- */
 #include <new_swi.h>
 #include <types.h>
 #include <exports.h>
 #include <exit.h>
 #include <bits/errno.h>
+#include <timer_driver.h> 
+
 
 /* prototype declarations fro read and write */
 ssize_t write(int fd, const void *buf, size_t count);
 ssize_t read(int, void *, size_t);
 
 
-
 uint32_t global_data;
+
+uint32_t sys_time =0;
+
+unsigned * get_handler_ptr(unsigned vector_address)
+{
+  unsigned *vector = (unsigned *) vector_address;
+  unsigned vec_off = (*vector & 0x00000FFF); /* getting the last 12 bits from the instruction*/
+  unsigned *table_ptr =  (unsigned *)(0x8 + vector_address +vec_off); /* adding 8 since pc is pointing 8 bytes ahead*/
+  unsigned *swi_ptr = (unsigned *) (*table_ptr); /* pointer to the defaukt swi */
+
+  return swi_ptr;
+}
+
+void install_redirect_ins(unsigned* hdlr_ptr, unsigned new_swi_adr, unsigned ins[])
+{
+  unsigned offset = 0x004;
+
+  ins[0]=*hdlr_ptr; /* getting old instruction in old_ptr1*/
+  ins[1]=*(hdlr_ptr+1); /* getting old instruction in old_ptr2*/
+  *hdlr_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
+  *(hdlr_ptr+1)=new_swi_adr; /* storing address of new swi handler*/	
+}
+
+
+void install_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
+{
+  unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
+  install_redirect_ins(hdlr_ptr,new_swi_adr,ins);
+}
+
+
+void restore_handler(unsigned vector_address, unsigned ins[])
+{
+  unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
+  
+  *hdlr_ptr=ins[0]; 
+  *(hdlr_ptr+1)=ins[1];
+}
+
 
 int kmain(int argc, char** argv, uint32_t table)
 {
 	app_startup(); /* bss is valid after this point */
 	global_data = table;
 
-	unsigned *vector = (unsigned *) 0x08; /* pointer to 0x08 vector table */
-	
-    unsigned vec_off = (*vector & 0x00000FFF); /* getting the last 12 bits from the instruction*/
-
-	unsigned *table_ptr =  (unsigned *)(0x10 +vec_off); /* adding 16 to the offset */
-
-	unsigned *swi_ptr = (unsigned *) (*table_ptr); /* pointer to the defaukt swi */
-
+	unsigned swi_ins[2] ={0,0}; /* array to store replaced instructions */
+	unsigned irq_ins[2] ={0,0}; /* array to store replaced instructions */
 	unsigned new_swi_adr = (unsigned) New_S_Handler; /* pointer to new swi handler */
+	unsigned new_irq_adr = (unsigned) New_IRQ_Handler; /* pointer to new swi handler */
 
-	volatile unsigned old_ins1, old_ins2; /* for storing old instructions, dont want to keep the values in reg */
-	unsigned offset = 0x004;
+	/* installs new swi handler */
+	install_handler(0x08,new_swi_adr,swi_ins);
 
-	old_ins1=*swi_ptr; /* getting old instruction in old_ptr1*/
-	old_ins2=*(swi_ptr+1); /* getting old instruction in old_ptr2*/
+		/* installs new irq handler */
+	install_handler(0x18,new_irq_adr,irq_ins);
 
-	*swi_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
-	*(swi_ptr+1)=new_swi_adr; /* storing address of new swi handler*/
-
+	init_timer();
+	setup_irq_stack();
 	setup_stack(argc,argv); /* seting up user stack and calling user program */
 
-/* Restoring to old values */
-	 *swi_ptr=old_ins1; 
-   *(swi_ptr+1)=old_ins2;
-
-
+	/* Restoring default swi handler */
+	restore_handler(0x08,swi_ins);
+	restore_handler(0x18,irq_ins);
+	
 	return 0;
 }
 
@@ -208,4 +242,11 @@ void C_SWI_Handler(unsigned swi_num, unsigned *regs )
                 break;                                                     
         }                                         
 
-}      
+}
+
+void C_IRQ_Handler(unsigned swi_num, unsigned *regs){                                                               
+                                                                                  
+	sys_time += 1;
+
+}
+

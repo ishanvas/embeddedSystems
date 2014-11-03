@@ -11,7 +11,8 @@
   /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/timer.h \
   /home/ishan/Downloads/FES/lab3-support/kernel/include/new_swi.h \
   /home/ishan/Downloads/FES/lab3-support/kernel/include/exit.h \
-  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/errno.h
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/errno.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/timer_driver.h
 
 /home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h:
 
@@ -36,3 +37,5 @@
 /home/ishan/Downloads/FES/lab3-support/kernel/include/exit.h:
 
 /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/errno.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/timer_driver.h:
