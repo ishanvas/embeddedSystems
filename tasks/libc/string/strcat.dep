@@ -1,11 +1,11 @@
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/string/strcat.o:  \
- /home/ishan/Downloads/FES/lab3-support/tasks/libc/string/strcat.c \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/string/strcat.o:  \
+ /home/lnukala/Downloads/embeddedSystems/tasks/libc/string/strcat.c \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/string.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/string.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h:

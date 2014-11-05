@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 	read(STDIN_FILENO, buf, 100);
 	//write(STDOUT_FILENO, hello, sizeof(hello)-1);
 
-
+        sleep(2000);
 	unsigned long end_time = time();
 	printf("%lu\n", end_time);
 	return 0;

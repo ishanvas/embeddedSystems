@@ -1,5 +1,5 @@
-/home/ishan/Downloads/FES/lab3-support/tasks/exit/exit.o:  \
- /home/ishan/Downloads/FES/lab3-support/tasks/exit/exit.S \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/swi.h
+/home/lnukala/Downloads/embeddedSystems/tasks/exit/exit.o:  \
+ /home/lnukala/Downloads/embeddedSystems/tasks/exit/exit.S \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/swi.h
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/swi.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/swi.h:

@@ -1,11 +1,11 @@
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/swi/write.o:  \
- /home/ishan/Downloads/FES/lab3-support/tasks/libc/swi/write.S \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/asm.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/swi.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/errno.h
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/swi/write.o:  \
+ /home/lnukala/Downloads/embeddedSystems/tasks/libc/swi/write.S \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/asm.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/swi.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/errno.h
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/asm.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/asm.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/swi.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/swi.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/errno.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/errno.h:

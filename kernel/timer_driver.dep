@@ -1,8 +1,8 @@
-/home/ishan/Downloads/FES/lab3-support/kernel/timer_driver.o:  \
- /home/ishan/Downloads/FES/lab3-support/kernel/timer_driver.c \
-  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/timer.h \
-  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/interrupt.h
+/home/lnukala/Downloads/embeddedSystems/kernel/timer_driver.o:  \
+ /home/lnukala/Downloads/embeddedSystems/kernel/timer_driver.c \
+  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/timer.h \
+  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/interrupt.h
 
-/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/timer.h:
+/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/timer.h:
 
-/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/interrupt.h:
+/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/interrupt.h:

@@ -1,11 +1,11 @@
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/stdlib/atoi.o:  \
- /home/ishan/Downloads/FES/lab3-support/tasks/libc/stdlib/atoi.c \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdlib.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/ctype.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/inline.h
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/stdlib/atoi.o:  \
+ /home/lnukala/Downloads/embeddedSystems/tasks/libc/stdlib/atoi.c \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdlib.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/ctype.h \
+  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/inline.h
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdlib.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdlib.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/ctype.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/ctype.h:
 
-/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/inline.h:
+/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/inline.h:
