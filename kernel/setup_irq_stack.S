@@ -19,4 +19,4 @@ setup_irq_stack:	MRS r3, cpsr  @ changes mode from kernel to irq
 	
 	MSR cpsr,r4				   @ moving back to kernel mode
 
-	MOVS pc, lr				   @moving to user mode
+	mov pc, lr				   @moving to user mode

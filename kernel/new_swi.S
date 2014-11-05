@@ -21,6 +21,8 @@ New_S_Handler:	SUB sp, sp, #4
 	ORR r4, r4, #0x13
 	MSR cpsr,r4
 
+	ldr r2, =global_data
+	ldr r8, [r2]
 
 	BL C_SWI_Handler
 	LDR r2, [sp, #14*4]

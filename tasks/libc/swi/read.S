@@ -1,4 +1,4 @@
-@ read.S: read sycall wrapper
+@ read.S: read syscall wrapper
 @
 @ Authors: Ishan Vashishtha <ivashish@andrew.cmu.edu>
 @ Date:    5th October 2014

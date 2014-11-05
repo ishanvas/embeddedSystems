@@ -26,7 +26,7 @@ setup_stack:	MRS r3, cpsr  @ changes mode
 
 	LDMFD r5, {sp}^ 	       @setting user mode sp
 	ADD sp,sp ,#4
-	STMFD sp!, {r0-r12,lr}     @saving kernel mode registers on stack
+	STMFD sp!, {r1-r12,lr}     @saving kernel mode registers on stack
 	MOV lr, #0xa0000000
 
 	MOVS pc, lr				   @moving to user mode

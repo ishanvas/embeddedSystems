@@ -10,8 +10,8 @@
 	.type setup_stack, %function
 exit:
 	ADD sp, r0, #60 		@ r0 points to address of stored regs on stack
-	LDR r0,[r0]				@ return number
-	LDMFD sp!,{r0-r12,lr}	@ restoring kernel state
+	ldr r0,[r0]				@ return number
+	LDMFD sp!,{r1-r12,lr}	@ restoring kernel state
 	
 	MOV pc, lr              @ moving back to kernel (no return)
 

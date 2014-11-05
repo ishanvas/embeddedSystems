@@ -19,6 +19,12 @@
 #include <bits/errno.h>
 #include <timer_driver.h> 
 
+#ifndef VEC_ADDRESS
+
+       #define SWI_VEC_ADDRESS  0x08
+       #define IRQ_VEC_ADDRESS  0x18
+#endif 
+
 
 /* prototype declarations fro read and write */
 ssize_t write(int fd, const void *buf, size_t count);
@@ -95,18 +101,18 @@ int kmain(int argc, char** argv, uint32_t table)
 	unsigned new_irq_adr = (unsigned) New_IRQ_Handler; /* pointer to new swi handler */
 
 	/* installs new swi handler */
-	install_handler(0x08,new_swi_adr,swi_ins);
+	install_handler(SWI_VEC_ADDRESS,new_swi_adr,swi_ins);
 
 		/* installs new irq handler */
-	install_handler(0x18,new_irq_adr,irq_ins);
+	install_handler(IRQ_VEC_ADDRESS,new_irq_adr,irq_ins);
 
 	init_timer();
 	setup_irq_stack();
 	setup_stack(argc,argv); /* seting up user stack and calling user program */
 
 	/* Restoring default swi handler */
-	restore_handler(0x08,swi_ins);
-	restore_handler(0x18,irq_ins);
+	restore_handler(SWI_VEC_ADDRESS,swi_ins);
+	restore_handler(IRQ_VEC_ADDRESS,irq_ins);
 	
 	return 0;
 }
