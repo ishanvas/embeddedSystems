@@ -15,6 +15,13 @@ New_S_Handler:	SUB sp, sp, #4
 	MOV r1, sp
 	LDR r0, [lr, #-4]
 	BIC r0,r0,#0xff000000
+
+	MRS r4, cpsr  				@ enable irq
+	BIC r4, r4, #0x000000FF
+	ORR r4, r4, #0x13
+	MSR cpsr,r4
+
+
 	BL C_SWI_Handler
 	LDR r2, [sp, #14*4]
 	MSR spsr, r2

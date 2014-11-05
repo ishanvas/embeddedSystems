@@ -15,6 +15,8 @@
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
+#define TIMER_BASE  0x40000000
+ 
 #define OSTMR_OSMR_ADDR(x)    (0x00A00000 + (x)*4)    /* OS Timer Match Register */
 
 #define OSTMR_OSCR_ADDR       0x00A00010   /* OS Timer Count Register */

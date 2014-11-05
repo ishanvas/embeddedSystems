@@ -13,7 +13,7 @@ setup_stack:	MRS r3, cpsr  @ changes mode
 	BIC r3, r3, #0x000000FF
 	BIC r3, r3, #0xF0000000
 	ORR r3, r3, #0x50
-	MSR spsr_fsxc,r3
+	MSR spsr,r3
 	MRS r6,spsr
 
 						   	   @ load 0xa3000000 in r4 and push r0 and r1 on it

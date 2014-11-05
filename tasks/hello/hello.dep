@@ -3,7 +3,9 @@
   /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/unistd.h \
   /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/fileno.h \
   /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h \
-  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdio.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdarg.h
 
 /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/unistd.h:
 
@@ -12,3 +14,7 @@
 /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h:
 
 /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h:
+
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdio.h:
+
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdarg.h:

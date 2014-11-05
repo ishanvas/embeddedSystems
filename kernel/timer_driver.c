@@ -1,11 +1,7 @@
 #include <arm/timer.h>
 #include <arm/interrupt.h>
 
-#ifndef _TIMER_BASE_
-    
-    #define TIMER_BASE  0x40000000
 
-#endif /* _TIMER_BASE_ */
 
 /*Function to mask memory mapped registers with required values*/
 void mask_mmr( unsigned addr, unsigned mask, unsigned short is_and)
@@ -47,9 +43,9 @@ void init_timer()
 
     *icmr = ( 1 << INT_OSTMR_0);
     
-    *iclr =  (*iclr) & (~( 1 << INT_OSTMR_0));
+    *iclr =  (~( 1 << INT_OSTMR_0));
     
-    *osmr0 = 3250;
+    *osmr0 = 32500;
 
     *oscr = 0x0;
     

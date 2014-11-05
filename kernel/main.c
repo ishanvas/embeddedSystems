@@ -27,7 +27,25 @@ ssize_t read(int, void *, size_t);
 
 uint32_t global_data;
 
-uint32_t sys_time =0;
+volatile unsigned long sys_time =0;
+
+ unsigned long time ()
+ {
+    return (unsigned long) sys_time;
+ }
+
+ void sleep (unsigned sleep_time)
+{
+    unsigned wake_up_time = sys_time + sleep_time;
+
+    while(1)
+    {
+       if (sys_time > wake_up_time)
+            break;
+ //     printf("sleeping %lu\n", sys_time);
+    }
+}
+
 
 unsigned * get_handler_ptr(unsigned vector_address)
 {
@@ -39,7 +57,7 @@ unsigned * get_handler_ptr(unsigned vector_address)
   return swi_ptr;
 }
 
-void install_redirect_ins(unsigned* hdlr_ptr, unsigned new_swi_adr, unsigned ins[])
+ void install_redirect_ins(unsigned* hdlr_ptr, unsigned new_swi_adr, unsigned ins[])
 {
   unsigned offset = 0x004;
 
@@ -50,14 +68,14 @@ void install_redirect_ins(unsigned* hdlr_ptr, unsigned new_swi_adr, unsigned ins
 }
 
 
-void install_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
+ void install_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
 {
   unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   install_redirect_ins(hdlr_ptr,new_swi_adr,ins);
 }
 
 
-void restore_handler(unsigned vector_address, unsigned ins[])
+ void restore_handler(unsigned vector_address, unsigned ins[])
 {
   unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   
@@ -210,6 +228,7 @@ void C_SWI_Handler(unsigned swi_num, unsigned *regs )
           size_t count;                                           
           size_t readCount;                                       
           size_t writeCount;                                      
+          unsigned long time_elapsed;
 
           /* subtracting base SWI address */                                                              
           swi_num = swi_num - (0x900000);                     
@@ -237,6 +256,17 @@ void C_SWI_Handler(unsigned swi_num, unsigned *regs )
                 writeCount = write(fd,buff,count);                             
                 *regs = writeCount;                                            
                 break;                              
+        case 6 :
+                /*Time returns the time since the kernel boot*/
+                time_elapsed = time((unsigned)*regs);
+                *regs = time_elapsed;
+                
+                break;
+
+          case 7:
+                sleep ((unsigned)*regs);
+
+                break;
                                                   
         default :                                               
                 break;                                                     
@@ -246,7 +276,12 @@ void C_SWI_Handler(unsigned swi_num, unsigned *regs )
 
 void C_IRQ_Handler(unsigned swi_num, unsigned *regs){                                                               
                                                                                   
-	sys_time += 1;
+	sys_time += 10;
 
+
+  volatile unsigned *ossr = (unsigned *) (TIMER_BASE + OSTMR_OSSR_ADDR);
+  volatile unsigned *oscr =(unsigned *) (TIMER_BASE + OSTMR_OSCR_ADDR);
+  *ossr = *ossr | 0x1; /*Writing 1 to clear the status register*/
+  *oscr = 0;
 }
 
