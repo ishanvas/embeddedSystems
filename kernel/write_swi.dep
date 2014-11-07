@@ -1,0 +1,17 @@
+/home/ishan/Downloads/FES/lab3-support/kernel/write_swi.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/write_swi.c \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/errno.h
+
+/home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h:
+
+/home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/bits/errno.h:

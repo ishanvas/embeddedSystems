@@ -1,41 +1,38 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/main.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/main.c \
-  /home/lnukala/Downloads/embeddedSystems/uboot/include/exports.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/types.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/stdarg.h \
-  /home/lnukala/Downloads/embeddedSystems/uboot/include/_exports.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/exception.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/interrupt.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/timer.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/new_swi.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/exit.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/bits/errno.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/timer_driver.h
+/home/ishan/Downloads/FES/lab3-support/kernel/main.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/main.c \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/exception.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/interrupt.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/timer.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/new_swi.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/new_irq.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/timer_driver.h
 
-/home/lnukala/Downloads/embeddedSystems/uboot/include/exports.h:
+/home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/types.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/stdarg.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h:
 
-/home/lnukala/Downloads/embeddedSystems/uboot/include/_exports.h:
+/home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/exception.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/exception.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/interrupt.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/interrupt.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/timer.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/timer.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/new_swi.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/new_swi.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/exit.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/new_irq.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/bits/errno.h:
-
-/home/lnukala/Downloads/embeddedSystems/kernel/include/timer_driver.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/timer_driver.h:

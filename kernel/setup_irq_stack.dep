@@ -1,5 +1,5 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/setup_irq_stack.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/setup_irq_stack.S \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/bits/swi.h
+/home/ishan/Downloads/FES/lab3-support/kernel/setup_irq_stack.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/setup_irq_stack.S \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/bits/swi.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h:

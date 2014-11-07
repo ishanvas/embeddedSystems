@@ -1,26 +1,26 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/assert.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/assert.c \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/assert.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/stdarg.h \
-  /home/lnukala/Downloads/embeddedSystems/uboot/include/exports.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/types.h \
-  /home/lnukala/Downloads/embeddedSystems/uboot/include/_exports.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/exception.h
+/home/ishan/Downloads/FES/lab3-support/kernel/assert.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/assert.c \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/assert.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h \
+  /home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/exception.h
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/assert.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/assert.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/stdarg.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/stdarg.h:
 
-/home/lnukala/Downloads/embeddedSystems/uboot/include/exports.h:
+/home/ishan/Downloads/FES/lab3-support/uboot/include/exports.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/types.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/uboot/include/_exports.h:
+/home/ishan/Downloads/FES/lab3-support/uboot/include/_exports.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/exception.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/exception.h:

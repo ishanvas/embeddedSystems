@@ -1,5 +1,5 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/start.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/start.S \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/asm.h
+/home/ishan/Downloads/FES/lab3-support/kernel/start.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/start.S \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/asm.h
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/asm.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/asm.h:

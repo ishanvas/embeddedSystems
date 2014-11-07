@@ -1,20 +1,20 @@
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/stdlib/strtoul.o:  \
- /home/lnukala/Downloads/embeddedSystems/tasks/libc/stdlib/strtoul.c \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdlib.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/ctype.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/inline.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/string.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/stdlib/strtoul.o:  \
+ /home/ishan/Downloads/FES/lab3-support/tasks/libc/stdlib/strtoul.c \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdlib.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/ctype.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/inline.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdlib.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdlib.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/ctype.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/ctype.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/inline.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/inline.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/string.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/string.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h:

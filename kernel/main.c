@@ -13,16 +13,17 @@
 #include <arm/timer.h>
 
 #include <new_swi.h>
+#include <new_irq.h>
 #include <types.h>
 #include <exports.h>
-#include <exit.h>
-#include <bits/errno.h>
 #include <timer_driver.h> 
+
 
 #ifndef VEC_ADDRESS
 
        #define SWI_VEC_ADDRESS  0x08
        #define IRQ_VEC_ADDRESS  0x18
+
 #endif 
 
 
@@ -33,27 +34,9 @@ ssize_t read(int, void *, size_t);
 
 uint32_t global_data;
 
-volatile unsigned long sys_time =0;
-
 volatile unsigned *swi_ptr;
 volatile unsigned *irq_ptr;
 
- unsigned long time ()
- {
-    return (unsigned long) sys_time;
- }
-
- void sleep (unsigned sleep_time)
-{
-    unsigned long wake_up_time = sys_time + sleep_time;
-
-    while(1)
-    {
-       if (sys_time > wake_up_time)
-            break;
-      //printf("sleeping %lu until %lu\n", sys_time,wake_up_time);
-    }
-}
 
 void set_handler_ptr(unsigned vector_address)
 {
@@ -100,8 +83,7 @@ unsigned * get_handler_ptr(volatile unsigned vector_address)
   //unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   unsigned offset = 0x004;
   if (vector_address == SWI_VEC_ADDRESS)
-  {
-    
+  {    
       ins[0]=*swi_ptr; /* getting old instruction in old_ptr1*/
       ins[1]=*(swi_ptr+1); /* getting old instruction in old_ptr2*/
       *swi_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
@@ -109,7 +91,6 @@ unsigned * get_handler_ptr(volatile unsigned vector_address)
   }
   else
   {
-
       ins[0]=*irq_ptr; /* getting old instruction in old_ptr1*/
       ins[1]=*(irq_ptr+1); /* getting old instruction in old_ptr2*/
       *irq_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
@@ -130,13 +111,13 @@ void restore_g_handler(unsigned vector_address, unsigned ins[])
   //unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   if (vector_address == SWI_VEC_ADDRESS)
   {
-  *swi_ptr=ins[0]; 
-  *(swi_ptr+1)=ins[1];
+      *swi_ptr=ins[0]; 
+      *(swi_ptr+1)=ins[1];
   }
   else
   {
-    *irq_ptr=ins[0]; 
-    *(irq_ptr+1)=ins[1];
+      *irq_ptr=ins[0]; 
+      *(irq_ptr+1)=ins[1];
   }
 
 }
@@ -183,179 +164,5 @@ int kmain(int argc, char** argv, uint32_t table)
   restore_g_handler(IRQ_VEC_ADDRESS,irq_ins);
 	
 	return 0;
-}
-
-/* SWI Handler for write */
- ssize_t write(int fd, const void *buf, size_t count)                            
- {                                                                               
-         // returning error in case fd doesn't point to stdout                   
-         if(fd != 1)                                                             
-         {                                                                       
-                 return -EBADF;                                                      
-         }                                                                       
-
-        /* allowed ranges */                                                                                 
-         unsigned int start_allow = 0xa0000000;                                   
-         unsigned int end_allow = 0xa3efffff;   
-                                                                                 
-         char* bufptr = (char*)buf;                                              
-                                                                                 
-         // checking if the buffer is the allowed area of memory                 
-         if( (unsigned int)buf < start_allow || ( ( (unsigned int)(buf)+count ) > end_allow ) )      
-         {                                                                       
-                 return -EFAULT;                                                      
-         }     
-                                                                                 
-         // Start getting data from stdin                                        
-         unsigned int i =0; 
-
-         for (i = 0; i < count; ++i)                                             
-                 {                                                                       
-                        char c = bufptr[i];
-                        /* prints \n for CR or LF */
-			                  if ((c == 10)||(c == 13))
-                  			{
-                  				putc('\n');
-                  			} 
-                  			else{
-                  				putc(c);                                                
-                  			}
-                 }                                                                       
-                                                                                         
-                 // finally 'i' will contain count of characters                         
-                                                                                         
-     return i;                                                               
-  }                                                                   
-
-
- ssize_t read(int fd, void *buf, size_t count)       
-{                                                    
-        // returning error in case fd doesn't point to stdin
-        if(fd!=0)                                           
-        {                                                   
-                return -EBADF;                                  
-        }                                                   
-                                                            
-        /* allowed ranges */
-        unsigned int start_heap = 0xa2000000; 
-                                                     
-        unsigned int end_heap = 0xa2ffffff;  
-                                             
-        char* bufptr = (char *)buf;          
-                                             
-        // checking if the buffer is the allowed area of memory
-        if( (unsigned int)&buf < start_heap || ( ((unsigned int)(buf)+count ) > end_heap ) )
-        {                                                                 
-                return -EFAULT;                                                
-        }                                                                 
-                                                                          
-        unsigned int i =0;                                                         
-	// Start getting data from stdin
-        for (i = 0; i < count; ++i)                                       
-                {                                                                 
-                        char c = getc();                                          
-                                                                                  
-                        if(c == 4 )// checking for EOT                            
-                        {                                              
-                                break;                                            
-                        }                                                         
-                        else if ((c == 8)||(c == 127)) // checking for delete and backsp
-                        {                                                               
-                                i--;                                                    
-                                puts("\b \b");                                           
-                        }                                                               
-                        else // otherwise                                               
-                        {                                                         
-                                                                                        
-                                if ((c == 10)||(c == 13)) // breaks if new line or CR
-                                {               
-					                             bufptr[i] = '\n';                                      
-					                             putc('\n');
-				   	                           i++;					/* since we are breaking value of i would be 1 less*/
-                                       break;                                          
-
-
-                                }
-                        				else
-                        				{
-                        					bufptr[i] = c;
-                        					putc(c);	
-                        				}   
-                         }                                                               
-                                                                                                        
-                    }                                                                       
-                                                                                                        
-          // finally 'i' will contain count of characters read( written in buffer)
-                                                                                                        
-                    return i;
- }
-
-
-
-/* Handles SWI requests
-* based on the SWI number redirects to appropriate SWI handler */
-void C_SWI_Handler(unsigned swi_num, unsigned *regs )
-  {                                                               
-                                                                                  
-          int fd;                                     
-          char *buff;                                           
-          size_t count;                                           
-          size_t readCount;                                       
-          size_t writeCount;                                      
-          unsigned long time_elapsed;
-
-          /* subtracting base SWI address */                                                              
-          swi_num = swi_num - (0x900000);                     
-
-          /* Routing based on swi_num */
-          switch(swi_num) {                                   
-          case 1 :                      
-                  /* passing the adress of registers, helps in no return */                                         
-                  exit(regs);                  
-                  break;                        
-          case 3 :                                                
-                  /* populating args from values on stack */
-                  fd = (int)*regs;                                           
-                  buff =(char *)*(regs+1);     
-                  count = (int)*(regs+2);      
-                  readCount = read(fd,buff,count);                                
-                  *regs = readCount;                                              
-                  break;                                          
-                                                                
-        case 4 :                                                
-                /* populating args from values on stack */
-                fd = (int)*regs;                            
-                buff =(char *)*(regs+1);                    
-                count = (int)*(regs+2);                     
-                writeCount = write(fd,buff,count);                             
-                *regs = writeCount;                                            
-                break;                              
-        case 6 :
-                /*Time returns the time since the kernel boot*/
-                time_elapsed = time((unsigned)*regs);
-                *regs = time_elapsed;
-                
-                break;
-
-          case 7:
-                sleep ((unsigned)*regs);
-
-                break;
-                                                  
-        default :                                               
-                break;                                                     
-        }                                         
-
-}
-
-void C_IRQ_Handler(unsigned swi_num, unsigned *regs){                                                               
-                                                                                  
-	sys_time += 10;
-
-
-  volatile unsigned *ossr = (unsigned *) (TIMER_BASE + OSTMR_OSSR_ADDR);
-  volatile unsigned *oscr =(unsigned *) (TIMER_BASE + OSTMR_OSCR_ADDR);
-  *ossr = *ossr | 0x1; /*Writing 1 to clear the status register*/
-  *oscr = 0;
 }
 

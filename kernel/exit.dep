@@ -1,5 +1,5 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/exit.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/exit.S \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/bits/swi.h
+/home/ishan/Downloads/FES/lab3-support/kernel/exit.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/exit.S \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/bits/swi.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/bits/swi.h:

@@ -1,23 +1,23 @@
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/stdio/printf.o:  \
- /home/lnukala/Downloads/embeddedSystems/tasks/libc/stdio/printf.c \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdio.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdarg.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/unistd.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/fileno.h \
-  /home/lnukala/Downloads/embeddedSystems/tasks/libc/stdio/doprnt.h
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/stdio/printf.o:  \
+ /home/ishan/Downloads/FES/lab3-support/tasks/libc/stdio/printf.c \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdio.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdarg.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/unistd.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/fileno.h \
+  /home/ishan/Downloads/FES/lab3-support/tasks/libc/stdio/doprnt.h
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdio.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdio.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/stdarg.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/stdarg.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/sys/types.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/sys/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/types.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/unistd.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/unistd.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/include/bits/fileno.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/include/bits/fileno.h:
 
-/home/lnukala/Downloads/embeddedSystems/tasks/libc/stdio/doprnt.h:
+/home/ishan/Downloads/FES/lab3-support/tasks/libc/stdio/doprnt.h:

@@ -2,24 +2,7 @@
 #include <arm/interrupt.h>
 
 
-
-/*Function to mask memory mapped registers with required values*/
-void mask_mmr( unsigned addr, unsigned mask, unsigned short is_and)
-{
-    volatile unsigned *mmr = (unsigned *) addr;
-    
-    if(is_and)  {
-        *mmr = ((*mmr) & mask); 
-    }
-    
-    else {
-        *mmr = ((*mmr) | mask); /*Seeting 29th, 28th and 27th bits to 0*/
-    } 
-
-    mask = mask;
-}
-
-
+volatile unsigned long sys_time =0;
 
 /*Timer Driver : Design Specs
 *1. The interrupts from OSMR1, OSMR2 and OSMR3 are masked.
@@ -45,7 +28,7 @@ void init_timer()
     
     *iclr =  (~( 1 << INT_OSTMR_0));
     
-    *osmr0 = 32500;
+    *osmr0 = 10*3250;
 
     *oscr = 0x0;
     

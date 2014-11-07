@@ -15,17 +15,20 @@ int main(int argc, char** argv)
 {
 	char buf[100];
 
-	//const char hello[] = "Hello World\r\n";
+	const char hello[] = "Hello World\r\n";
 
-	unsigned long start_time = time();
-	printf("%lu\n", start_time);
-	
+	/*while(1)
+	{
+		sleep(1000);
+		unsigned long start_time = time();
+		printf("%lu\n", start_time);
+	}*/
 
-	//sleep(1565);
+	sleep(1565);
 	read(STDIN_FILENO, buf, 100);
-	//write(STDOUT_FILENO, hello, sizeof(hello)-1);
+	write(STDOUT_FILENO, hello, sizeof(hello)-1);
 
-        sleep(2000);
+      
 	unsigned long end_time = time();
 	printf("%lu\n", end_time);
 	return 0;

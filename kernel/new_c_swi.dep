@@ -1,0 +1,8 @@
+/home/ishan/Downloads/FES/lab3-support/kernel/new_c_swi.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/new_c_swi.c \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/new_swi.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/new_swi.h:
+
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:

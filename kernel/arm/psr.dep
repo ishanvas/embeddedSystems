@@ -1,11 +1,11 @@
-/home/lnukala/Downloads/embeddedSystems/kernel/arm/psr.o:  \
- /home/lnukala/Downloads/embeddedSystems/kernel/arm/psr.c \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/types.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h \
-  /home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h
+/home/ishan/Downloads/FES/lab3-support/kernel/arm/psr.o:  \
+ /home/ishan/Downloads/FES/lab3-support/kernel/arm/psr.c \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/types.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h \
+  /home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/types.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/types.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/arm/psr.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/arm/psr.h:
 
-/home/lnukala/Downloads/embeddedSystems/kernel/include/inline.h:
+/home/ishan/Downloads/FES/lab3-support/kernel/include/inline.h:
