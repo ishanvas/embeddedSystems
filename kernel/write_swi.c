@@ -1,6 +1,7 @@
 #include <exports.h>
 #include <types.h>
 #include <bits/errno.h>
+#include <new_swi.h>
 
 
 /* SWI Handler for write */
@@ -10,37 +11,39 @@
          if(fd != 1)                                                             
          {                                                                       
                  return -EBADF;                                                      
-         }                                                                       
-
-        /* allowed ranges */                                                                                 
-         unsigned int start_allow = 0xa0000000;                                   
-         unsigned int end_allow = 0xa3efffff;   
+         }                                                                                                                 
                                                                                  
          char* bufptr = (char*)buf;                                              
                                                                                  
-         // checking if the buffer is the allowed area of memory                 
-         if( (unsigned int)buf < start_allow || ( ( (unsigned int)(buf)+count ) > end_allow ) )      
+         /* if the buffer points to a restricted area of memory , returns -EFAULT */
+         if( (unsigned int)buf < WRITE_ALLOWED_AREA_START || ( ( (unsigned int)(buf)+count ) > WRITE_ALLOWED_AREA_END ) )      
          {                                                                       
                  return -EFAULT;                                                      
          }     
                                                                                  
-         // Start getting data from stdin                                        
+                                                 
          unsigned int i =0; 
 
+         /* Read characters from buffer*/
          for (i = 0; i < count; ++i)                                             
                  {                                                                       
+                        /* Reads character at index i from buffer*/
                         char c = bufptr[i];
+
                         /* prints \n for CR or LF */
 			                  if ((c == 10)||(c == 13))
                   			{
+                          /* Change line */
                   				putc('\n');
                   			} 
                   			else{
+                          /* Displays character on STDOUT*/
                   				putc(c);                                                
                   			}
                  }                                                                       
                                                                                          
-                 // finally 'i' will contain count of characters                         
+          /* finally 'i' will contain count of characters written 
+           * So returning i */                         
                                                                                          
-     return i;                                                               
+          return i;                                                               
   }                                                                   

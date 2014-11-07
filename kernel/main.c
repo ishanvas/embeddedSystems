@@ -14,30 +14,22 @@
 
 #include <new_swi.h>
 #include <new_irq.h>
+#include <kernel_utils.h>
 #include <types.h>
 #include <exports.h>
 #include <timer_driver.h> 
 
 
-#ifndef VEC_ADDRESS
-
-       #define SWI_VEC_ADDRESS  0x08
-       #define IRQ_VEC_ADDRESS  0x18
-
-#endif 
-
-
-/* prototype declarations fro read and write */
-ssize_t write(int fd, const void *buf, size_t count);
-ssize_t read(int, void *, size_t);
-
-
 uint32_t global_data;
 
+/* Pointer to SWI Handler */
 volatile unsigned *swi_ptr;
+
+/* Pointer to IRQ Handler */
 volatile unsigned *irq_ptr;
 
 
+/* Sets the global pointer for IRQ & SWI handler */ 
 void set_handler_ptr(unsigned vector_address)
 {
   unsigned *vector = (unsigned *) vector_address;
@@ -78,7 +70,8 @@ unsigned * get_handler_ptr(volatile unsigned vector_address)
   *(hdlr_ptr+1)=new_swi_adr; /* storing address of new swi handler*/	
 }
 
- void install_g_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
+
+ void install_g_handler(unsigned vector_address, unsigned new_adr, unsigned ins[])
 {
   //unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   unsigned offset = 0x004;
@@ -87,37 +80,40 @@ unsigned * get_handler_ptr(volatile unsigned vector_address)
       ins[0]=*swi_ptr; /* getting old instruction in old_ptr1*/
       ins[1]=*(swi_ptr+1); /* getting old instruction in old_ptr2*/
       *swi_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
-      *(swi_ptr+1)=new_swi_adr;
+      *(swi_ptr+1)=new_adr;
   }
   else
   {
-      ins[0]=*irq_ptr; /* getting old instruction in old_ptr1*/
+    /* saving current instructions, to restore in future */
+      ins[0]=*irq_ptr; 
       ins[1]=*(irq_ptr+1); /* getting old instruction in old_ptr2*/
-      *irq_ptr=(offset|0xe51FF000); /* storing ldr pc, [pc,#-4]*/
-      *(irq_ptr+1)=new_swi_adr;
+
+      /* storing ldr pc, [pc,#-4] and address of new handler */
+      *irq_ptr=(offset|0xe51FF000); 
+      *(irq_ptr+1)=new_adr;
   }
 }
 
 
 
- void install_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
+void install_handler(unsigned vector_address, unsigned new_swi_adr, unsigned ins[])
 {
   unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   install_redirect_ins(hdlr_ptr,new_swi_adr,ins);
 }
 
+/* Restore handler's original state */
 void restore_g_handler(unsigned vector_address, unsigned ins[])
 {
-  //unsigned* hdlr_ptr = get_handler_ptr(vector_address); 
   if (vector_address == SWI_VEC_ADDRESS)
   {
-      *swi_ptr=ins[0]; 
-      *(swi_ptr+1)=ins[1];
+      *swi_ptr=ins[0]; /* restoring first instruction */
+      *(swi_ptr+1)=ins[1]; /* restoring second instruction */
   }
   else
   {
-      *irq_ptr=ins[0]; 
-      *(irq_ptr+1)=ins[1];
+      *irq_ptr=ins[0]; /* restoring first instruction */
+      *(irq_ptr+1)=ins[1]; /* restoring second instruction */
   }
 
 }
@@ -137,29 +133,33 @@ int kmain(int argc, char** argv, uint32_t table)
 	app_startup(); /* bss is valid after this point */
 	global_data = table;
 
-	unsigned swi_ins[2] ={0,0}; /* array to store replaced instructions */
-	unsigned irq_ins[2] ={0,0}; /* array to store replaced instructions */
-	unsigned new_swi_adr = (unsigned) New_S_Handler; /* pointer to new swi handler */
-	unsigned new_irq_adr = (unsigned) New_IRQ_Handler; /* pointer to new swi handler */
+	unsigned swi_ins[2] ={0,0}; /* array to store replaced SWI instructions */
+	unsigned irq_ins[2] ={0,0}; /* array to store replaced IRQ instructions */
+	unsigned new_swi_adr = (unsigned) New_S_Handler; /* pointer to new SWI handler */
+	unsigned new_irq_adr = (unsigned) New_IRQ_Handler; /* pointer to new IRQ handler */
 
+  /* Setting the global ptrs of SWI and IRQ handler */
   set_handler_ptr(SWI_VEC_ADDRESS);
   set_handler_ptr(IRQ_VEC_ADDRESS);
 
 
 	/* installs new swi handler */
-	//install_handler(SWI_VEC_ADDRESS,new_swi_adr,swi_ins);
   install_g_handler(SWI_VEC_ADDRESS,new_swi_adr,swi_ins);
+
+  /* installs new irq handler */
   install_g_handler(IRQ_VEC_ADDRESS,new_irq_adr,irq_ins);
-		/* installs new irq handler */
-	//install_handler(IRQ_VEC_ADDRESS,new_irq_adr,irq_ins);
-
+	
+	
+  /* initializes OS timer */
 	init_timer();
-	setup_irq_stack();
-	setup_stack(argc,argv); /* seting up user stack and calling user program */
 
-	/* Restoring default swi handler */
-	//restore_handler(SWI_VEC_ADDRESS,swi_ins);
-	//restore_handler(IRQ_VEC_ADDRESS,irq_ins);
+  /* setups up stack for IRQ handler */
+	setup_irq_stack();
+
+  /* sets up user stack and calling user program */
+	setup_stack(argc,argv); 
+
+	/* Restoring SWI and IRQ handler to their original state */
   restore_g_handler(SWI_VEC_ADDRESS,swi_ins);
   restore_g_handler(IRQ_VEC_ADDRESS,irq_ins);
 	

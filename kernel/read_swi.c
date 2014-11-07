@@ -1,68 +1,71 @@
 #include <exports.h>
 #include <types.h>
 #include <bits/errno.h>
-
+#include <new_swi.h>
 
 ssize_t read(int fd, void *buf, size_t count)       
 {                                                    
-        /* returning error in case fd doesn't point to stdin*/
+        /* returns error in case fd doesn't point to stdin*/
         if(fd!=0)                                           
         {                                                   
                 return -EBADF;                                  
         }                                                   
-                                                            
-        /* allowed ranges */
-        unsigned int start_heap = 0xa2000000; 
-                                                     
-        unsigned int end_heap = 0xa2ffffff;  
+                                                        
                                              
         char* bufptr = (char *)buf;          
                                              
-        /* checking if the buffer is the allowed area of memory*/
-        if( (unsigned int)&buf < start_heap || ( ((unsigned int)(buf)+count ) > end_heap ) )
+        /* checks if the buffer is the allowed area of memory */
+        if( (unsigned int)&buf < READ_ALLOWED_AREA_START || ( ((unsigned int)(buf)+count ) > READ_ALLOWED_AREA_END ) )
         {                                                                 
                 return -EFAULT;                                                
         }                                                                 
                                                                           
         unsigned int i =0;                                                         
-	       /* Start getting data from stdin*/
+
+	   /* Start reading characters from STDIN*/
         for (i = 0; i < count; ++i)                                       
-                {                                                                 
+                {                             
+                        /* read a character from STDIN */
                         char c = getc();                                          
-                                                                                  
-                        if(c == 4 )/* checking for EOT */
+                        
+                        /* checks for EOT character */                                                    
+                        if(c == 4 )
                         {                                              
                                 break;                                            
-                        }                                                         
-                        else if ((c == 8)||(c == 127)) /* checking for delete and backsp */
+                        }                              
+                        /* checking for delete and backsp */                           
+                        else if ((c == 8)||(c == 127)) 
                         {                                                               
                                 i--;                                                    
                                 puts("\b \b");                                           
-                        }                                                               
-                        else /* otherwise */
+                        }
+                        /* for everything else */                                                           
+                        else 
                         {                                                         
-                                                                                        
-                                if ((c == 10)||(c == 13)) /* breaks if new line or CR */
+                                /* checks for new line or CR */
+                                if ((c == 10)||(c == 13)) 
                                 {               
-					                             bufptr[i] = '\n';                                      
-					                             putc('\n');
-				   	                           i++;					/* since we are breaking value of i would be 1 less*/
+					                   bufptr[i] = '\n';                                      
+					                   putc('\n');
+                                       /* since we are breaking, value of i would be 1 less
+                                        * So incrementing i */
+				   	                   i++;					
                                        break;                                          
-
-
                                 }
-                        				else
-                        				{
-                        					bufptr[i] = c;
-                        					putc(c);	
-                        				}   
+                        		else
+                        		{
+                                    /* Stores the character in the buffer */
+                					bufptr[i] = c;
+                                    /* Display character to the user */
+                					putc(c);	
+                				}   
                          }                                                               
                                                                                                         
                     }                                                                       
                                                                                                         
-          /* finally 'i' will contain count of characters read( written in buffer) */
+          /* finally 'i' will contain count of characters read(written in buffer) */
                                                                                                         
                     return i;
  }
 
- 
+
