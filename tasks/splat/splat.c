@@ -5,6 +5,11 @@
  * Links to libc.
  */
 
+/*Submitted by : 
+Ishan Vashishtha : ivashish
+Leelakrishna Nukala : lnukala
+*/
+
 #include <unistd.h>
 #include <stdio.h>
 
@@ -13,12 +18,13 @@ static unsigned state = 0;
 
 void changeState()
 {
-	const char cursor_display_0[] = "\b|";
-	const char cursor_display_1[] = "\b/";
-	const char cursor_display_2[] = "\b-";
-	const char cursor_display_3[] = "\b\\";
+        /*Defining the states of the buffer*/
+	const char cursor_display_0[] = "\b|";  //State 1
+	const char cursor_display_1[] = "\b/";  //State 2
+	const char cursor_display_2[] = "\b-";  //State 3
+	const char cursor_display_3[] = "\b\\"; //State 4 
 
-
+        /*Writing the state to stdout and changing the state to the next state*/
 	if(state == 0)
 	{
 		write(STDOUT_FILENO, cursor_display_0, sizeof(cursor_display_0));
@@ -48,10 +54,10 @@ void changeState()
 
 int main(int argc, char** argv)
 {
-	/* Add code here -- put your names at the top. */
+	/*Non terminating loop*/
 	while(1)
 	{
-		sleep(160);
+		sleep(160); //Sleep for 160 ms
 		changeState();
 	}
 
